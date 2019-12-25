@@ -1,2 +1,1 @@
-# USB_ButtonBox
- 
+# USB_ButtonBox on AtMega8
