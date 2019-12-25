@@ -23,10 +23,7 @@ void MatrixButtons_Init()
 
 volatile uint8_t  counter		= 0;
 volatile uint32_t prev_state	= 0;
-volatile uint32_t _prev_state	= 0;
 volatile uint8_t  prev_state_0	= 0;
-volatile uint8_t  prev_state_1	= 0;
-volatile uint8_t  prev_state_2	= 0;
 
  uint8_t adcData[3] = {0,0,0};
 
@@ -68,12 +65,7 @@ void MatrixButtons_Scan(uint8_t out[])
 	if(adcData[2] > 200) curr_state[2] |= (1 << 1);
 	
 	//--------------------    тумблер    ---------------------
-	if( ((prev_state_0 & 1) == 1) && ((curr_state[0] & 1) == 0) ) curr_state[0] |= 0b00000010;
-	if( ((prev_state_0 & 1) == 1) && ((curr_state[0] & 1) == 1) )
-	{
-		 curr_state[0] &= 0b11111110; prev_state_0 |= 0b00000001;
-	}
-	else { prev_state_0 = curr_state[0]; }
+	
 	//-----------------------------------------------
 	
 	
@@ -84,7 +76,7 @@ void MatrixButtons_Scan(uint8_t out[])
 		prev_state = curr_state[0] | (curr_state[1] << 7) | (curr_state[2] << 15);
 		if((counter > 30) && (counter & 1) )
 		{
-			curr_state[0] &= 0b00000100;
+			curr_state[0] &= 0b00000111;
 			curr_state[1] = 0;
 			curr_state[2] = 0;
 			counter = 33;

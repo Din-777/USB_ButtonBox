@@ -28,7 +28,7 @@
 #define BT_PIN_1	6
 #define BT_PIN_3	7
 
-/* ---------------------------- Macro Magic ---------------------------- */
+/* ---------------------------- Macros Magic ---------------------------- */
 #define		CONCAT(a,b)			a ## b
 
 #define		CONCAT_DDR(a)			CONCAT(DDR, a)
